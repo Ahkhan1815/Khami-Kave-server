@@ -52,7 +52,7 @@ router.post("/", async (req, res) => {
         },
         to: email,
         subject: "Verify your Khami's Kave Account",
-        text: `Click on the following link to verify your account: http://localhost:3002/auth/verification/${verificationToken}`
+        text: `Click on the following link to verify your account: https://khami-kave-server.onrender.com/auth/verification/${verificationToken}`
     }
     bcrypt.hash(password, 15).then((hash) => {
         Users.create({
