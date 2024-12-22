@@ -1,25 +1,31 @@
 require('dotenv').config();
 
+require('dotenv').config();
+
 module.exports = {
   "development": {
-    "username": "root",
-    "password": process.env.DB_PASSWORD,
-    "database": "KhamiKaveDB",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": process.env.DB_USER,  
+    "password": process.env.DB_PASSWORD,  
+    "database": process.env.DB_NAME,  
+    "host": process.env.DB_HOST || 'localhost', 
+    "dialect": "postgres",  
+    "port": process.env.DB_PORT || 5432  
   },
   "test": {
-    "username": "root",
-    "password": null,
+    "username": process.env.DB_USER, 
+    "password": process.env.DB_PASSWORD,  
     "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": process.env.DB_HOST || 'localhost',  
+    "dialect": "postgres", 
+    "port": process.env.DB_PORT || 5432 
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": process.env.DB_USER, 
+    "password": process.env.DB_PASSWORD,  
+    "database": process.env.DB_NAME,  
+    "host": process.env.DB_HOST,  
+    "dialect": "postgres",  
+    "port": process.env.DB_PORT || 5432  
   }
 }
+
