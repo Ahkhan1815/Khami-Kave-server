@@ -19,6 +19,12 @@ router.post("/", validateToken, checkVerification, async (req, res) => {
     res.json(comment);
 });
 
+router.delete("/:commentId", async (req, res) => {
+    const commentId = req.params.commentId;
+    const comment = await GamesPosts.findByPk(commentId);
+    await comment.destroy();
+    res.json("Comment Deleted Successfully");
+});
 
 
 module.exports = router;
