@@ -22,8 +22,13 @@ router.post("/", validateToken, checkVerification, async (req, res) => {
 router.delete("/:commentId", async (req, res) => {
     const commentId = req.params.commentId;
     const comment = await Comments.findByPk(commentId);
-    await comment.destroy();
-    res.json("Comment Deleted Successfully");
+    if (!comment){
+        res.json({error: "Comment not found"});
+    }
+    else{
+        await comment.destroy();
+        res.json("Comment Deleted Successfully");
+    }
 });
 
 

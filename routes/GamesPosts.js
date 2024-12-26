@@ -24,8 +24,13 @@ router.post("/", validateToken, checkVerification, async (req,res) => {
 router.delete("/byId/:id", async (req, res) => {
     const id = req.params.id;
     const post = await GamesPosts.findByPk(id);
-    await post.destroy();
-    res.json("Post Deleted Successfully");
+    if (!post){
+        res.json({error: "Post not found"});
+    }
+    else{
+        await post.destroy();
+        res.json("Post Deleted Successfully");
+    }
 })
 
 
