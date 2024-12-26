@@ -23,6 +23,11 @@ module.exports = (sequelize, DataTypes) => {
         verificationToken:{
             type: DataTypes.STRING,
             allowNull: true,
+        },
+        isAdmin:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
         }
     });
 

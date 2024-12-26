@@ -61,6 +61,7 @@ router.post("/", async (req, res) => {
             email: email,
             verification: false,
             verificationToken: verificationToken,
+            isAdmin: false,
 
         })
         transport.sendMail(mailInfo,(error) => {
@@ -98,7 +99,7 @@ router.post("/login", async (req, res) => {
     bcrypt.compare(password, user.password).then((match) => {
         if (!match) res.json({ error: "Wrong Username or Password" });
         else {
-            const accessToken = jwt.sign({ username: user.username, id: user.id, verification: user.verification }, "xvVOShLivM");
+            const accessToken = jwt.sign({ username: user.username, id: user.id, verification: user.verification , isAdmin: user.isAdmin}, "xvVOShLivM");
             res.json(accessToken);
         }
     });
