@@ -99,7 +99,7 @@ router.post("/login", async (req, res) => {
     bcrypt.compare(password, user.password).then((match) => {
         if (!match) res.json({ error: "Wrong Username or Password" });
         else {
-            const accessToken = jwt.sign({ username: user.username, id: user.id, verification: user.verification , isAdmin: user.isAdmin,}, "xvVOShLivM");
+            const accessToken = jwt.sign({ username: user.username, id: user.id, verification: user.verification , isAdmin: user.isAdmin,}, process.env.JWT_CODE);
             res.json(accessToken);
         }
     });
