@@ -7,7 +7,7 @@ const checkVerification = async (req,res,next) => {
     const accessToken = req.header("accessToken");
     try{
         const validToken = jwtDecode(accessToken);
-        const user = await Users.findbyPk(validToken.id);
+        const user = await Users.findByPk(validToken.id);
         if (user.verification){
             return next();
         }
