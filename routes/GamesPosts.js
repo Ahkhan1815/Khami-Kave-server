@@ -17,8 +17,8 @@ router.get("/byId/:id", async (req, res) => {
 
 router.post("/", validateToken, checkVerification, async (req,res) => {
     const post = req.body;
-    await GamesPosts.create(post);
-    res.json(post);
+    const newPost = await GamesPosts.create(post);
+    res.json(newPost);
 });
 
 router.delete("/byId/:id", async (req, res) => {
